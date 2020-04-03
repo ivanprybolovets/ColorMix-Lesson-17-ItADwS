@@ -19,6 +19,14 @@ class ViewController: UIViewController {
         colorView.layer.cornerRadius = 10
     }
 
+    @IBAction func switchChanget(_ sender: UISwitch) {
+        if sender.isOn {
+            colorView.backgroundColor = .red
+        } else {
+            colorView.backgroundColor = .black
 
+        }
+    }
+    
 }
 
