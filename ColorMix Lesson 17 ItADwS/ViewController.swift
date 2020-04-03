@@ -27,10 +27,21 @@ class ViewController: UIViewController {
         colorView.layer.cornerRadius = 10
         colorView.layer.borderColor = UIColor.red.cgColor
         colorView.layer.borderWidth = 5
+        
+        updateControls()
     }
+    
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         colorView.backgroundColor = UIColor.clear
         
+        redSwitch.isOn = false
+        greenSwitch.isOn = false
+        blueSwitch.isOn = false
+        
+        redSlider.value = 0
+        greenSlider.value = 0
+        blueSlider.value = 0
+
     }
     
     @IBAction func rgbSlideUpdate(_ sender: UISlider) {
@@ -54,18 +65,26 @@ class ViewController: UIViewController {
         var blue : CGFloat = 0
         
         if redSwitch.isOn{
-            red = 1
+            red = CGFloat(redSlider.value)
         }
         if greenSwitch.isOn{
-            green = 1
+            green = CGFloat(greenSlider.value)
         }
         if blueSwitch.isOn{
-            blue = 1
+            blue = CGFloat(blueSlider.value)
         }
         
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
         colorView.backgroundColor = color
     }
+    
+   // Method to make sure all of the slides are anabel properly
+    func updateControls() {
+        redSlider.isEnabled = redSwitch.isOn
+        greenSlider.isEnabled = greenSwitch.isOn
+        blueSlider.isEnabled = blueSwitch.isOn
+    }
+    
 //    @IBAction func switchChanget(_ sender: UISwitch) {
 //        if sender.isOn {
 //            colorView.backgroundColor = .red
